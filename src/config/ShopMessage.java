@@ -1,0 +1,44 @@
+package config;
+
+public class ShopMessage {
+    public static final String NOTIFY_INPUT_EMPTY = "Không được để trống! Vui lòng nhập dữ liệu!";
+    public static final String NOTIFY_INPUT_LENGTH = "Vui lòng nhập từ 6 đến 30 ký tự";
+    public static final String NOTIFY_INTEGER_FORMAT = "Vui lòng nhập dạng số nguyên";
+    public static final String NOTIFY_CHOICE_STATUS = "Vui lòng chọn 1 hoặc 2";
+    public static final String NOTIFY_CATALOG_NAME_EXIST = "Danh mục này đã tồn tại! Vui lòng nhập lại";
+    public static final String NOTIFY_CATALOG_CHOICE = "Vui lòng chọn danh mục trong danh sách";
+    public static final String NOTIFY_INPUT_COLOR_LENGTH = "Vui lòng nhập từ 4 đến 30 ký tự";
+    public static final String NOTIFY_COLOR_NAME_EXIST = "Màu sắc này đã tồn tại! Vui lòng nhập lại";
+    public static final String NOTIFY_INPUT_SIZE_LENGTH = "Vui lòng nhập từ 1 đến 10 ký tự";
+    public static final String NOTIFY_SIZE_NAME_EXIST = "Kích cỡ này đã tồn tại! Vui lòng nhập lại";
+    public static final String NOTIFY_INPUT_PRODUCTID_LENGTH = "Vui lòng nhập 5 ký tự";
+    public static final String NOTIFY_INPUT_PRODUCTID_STARTWITH = "Vui lòng nhập ký tự đầu tiên là P";
+    public static final String NOTIFY_PRODUCTID_EXIST = "Mã sản phẩm này đã tồn tại! Vui lòng nhập lại";
+    public static final String NOTIFY_PRODUCT_NAME_EXIST = "Tên sản phẩm này đã tồn tại! Vui lòng nhập lại";
+    public static final String NOTIFY_FLOAT_FORMAT = "Vui lòng nhập dạng số thực lớn hơn hoặc bằng 0";
+    public static final String NOTIFY_DISCOUNT = "Vui lòng nhập dạng số nguyên từ 0 đến 100";
+    public static final String NOTIFY_INPUT_PRODUCT_TITLE_LENGTH = "Vui lòng nhập từ 10 đến 50 ký tự";
+    public static final String NOTIFY_INPUT_PRODUCT_COLOR = "Vui lòng chọn màu sắc trong danh sách";
+    public static final String NOTIFY_INPUT_PRODUCT_COLOR_EXIST = "Màu sắc này đã có trong danh sách màu sắc sản phẩm";
+    public static final String NOTIFY_INPUT_PRODUCT_SIZE = "Vui lòng chọn size trong danh sách";
+    public static final String NOTIFY_INPUT_PRODUCT_SIZE_EXIST = "Kích cỡ này đã có trong danh sách kích cỡ sản phẩm";
+    public static final String NOTIFY_INPUT_PRODUCT_CATALOG = "Vui lòng chọn trong danh sách";
+    public static final String NOTIFY_INPUT_USER_NAME = "Vui lòng nhập 6 ký tự trở lên, gồm ký tự thường, ký tự đặc biệt, hoa và số";
+    public static final String NOTIFY_INPUT_USER_PASSWORD = "Vui lòng nhập 6 ký tự trở lên";
+    public static final String NOTIFY_INPUT_CONFIRM_PASSWORD = "Tài khoản hoặc mật khẩu không chính xác! Vui lòng nhập lại";
+    public static final String NOTIFY_INPUT_USER_EMAIL = "Vui lòng nhập đúng dạng email";
+    public static final String NOTIFY_INPUT_USER_PHONE = "Vui lòng nhập đúng dạng số điện thoại";
+    public static final String NOTIFY_CHOICE_MENU = "Vui lòng chọn từ 1 - 3";
+    public static final String NOTIFY_EXIST_USER = "Tài khoản đã tồn tại! Vui lòng nhập lại";
+    public static final String NOTIFY_REGISTER_SUCCESS = "Đăng ký thành công!";
+    public static final String NOTIFY_REGISTER_FAIL = "Đăng ký thất bại!";
+    public static final String NOTIFY_CHOICE_ADMIN_MENU = "Vui lòng chọn từ 1 - 6";
+    public static final String NOTIFY_CHOICE_USER_MENU = "Vui lòng chọn từ 1 - 4";
+    public static final String NOTIFY_UPDATE_SUCCESS = "Cập nhật thành công!";
+    public static final String NOTIFY_DELETE_SUCCESS = "Xóa thành công!";
+    public static final String NOTIFY_INPUT_SUCCESS = "Thêm mới thành công!";
+    public static final String NOTIFY_CHOICE_COLOR_MENU = "Vui lòng chọn từ 1 - 5";
+    public static final String NOTIFY_NOT_EXIST_CATALOG = "Danh mục này không tồn tại không danh sách";
+    public static final String NOTIFY_NOT_EXIST_COLOR = "Màu sắc này không tồn tại không danh sách";
+    public static final String NOTIFY_ACTIVE_STATUS = "Vui lòng chọn trạng thái hoạt động";
+}
