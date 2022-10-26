@@ -41,4 +41,7 @@ public class ShopMessage {
     public static final String NOTIFY_NOT_EXIST_CATALOG = "Danh mục này không tồn tại không danh sách";
     public static final String NOTIFY_NOT_EXIST_COLOR = "Màu sắc này không tồn tại không danh sách";
     public static final String NOTIFY_ACTIVE_STATUS = "Vui lòng chọn trạng thái hoạt động";
+    public static final String NOTIFY_NOT_EXIST_USER = "Tài khoản này không tồn tại trong danh sách";
+    public static final String NOTIFY_CLOSE_USER = "Tài khoản đã bị khóa";
+    public static final String NOTIFY_NOT_EXIST_PRODUCT = "Sản phẩm không tồn tại trong danh sách";
 }

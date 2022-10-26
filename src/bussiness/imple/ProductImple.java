@@ -332,17 +332,21 @@ public class ProductImple implements IShop<Product, Integer> {
         String stringDate = formatter.format(product.getDateInputProduct());
         System.out.println("*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*");
         System.out.printf("|   %-35s%-35s%-30s%-35s%-30s\n", "Mã sản phẩm", "Tên sản phẩm", "Giá sản phẩm", "Phần trăm giảm giá", "Giá bán sản phẩm");
-        System.out.printf("|   %-35s%-35s%-30.2f%-35d%-30.2f\n", product.getProductID(), product.getProductName(), product.getPrice(), product.getDiscount(), product.getExportPrice());
+        System.out.printf("|   %-35s%-35s%-30.0f%-35d%-30.0f\n", product.getProductID(), product.getProductName(), product.getPrice(), product.getDiscount(), product.getExportPrice());
         System.out.printf("|   %-35s%-35s%-30s%-35s%-30s\n", "Tiêu đề", "Mô tả", "Danh mục", "Trạng thái", "Ngày nhập sản phẩm");
         System.out.printf("|   %-35s%-35s%-30s%-35s%-30s\n", product.getTitle(), product.getDescriptions(), product.getCatalog().getCatalogName(), status, stringDate);
         System.out.println("|   Color: ");
         for (Color col : product.getColor()) {
-            System.out.print("|   " + col.getColorName() + "\t");
+            if (col.isColorStatus()) {
+                System.out.print("|   " + col.getColorName() + "\t");
+            }
         }
         System.out.println();
         System.out.println("|   Size: ");
         for (Size size : product.getSize()) {
-            System.out.print("|   " + size.getSizeName() + "\t");
+            if (size.isSizeStatus()) {
+                System.out.print("|   " + size.getSizeName() + "\t");
+            }
         }
         System.out.println();
         System.out.println("*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*");

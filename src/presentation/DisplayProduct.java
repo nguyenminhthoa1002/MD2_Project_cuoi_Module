@@ -5,15 +5,15 @@ import config.ShopValidate;
 
 import java.util.Scanner;
 
-public class UserMenu {
-    public static void displayUserMenu(Scanner scanner) {
+public class DisplayProduct {
+    public static void displayProductForUser(Scanner scanner){
         boolean checkExitUserMenu = true;
         do {
             System.out.println("*--------------------------------------------------------------------------------------------------------------------------*");
-            System.out.println("|                                 ******************** USER MENU ***************                                           |");
-            System.out.println("|  1. Xem danh sách sản phẩm                                                                                               |");
-            System.out.println("|  2. Tìm kiếm sản phẩm                                                                                                    |");
-            System.out.println("|  3. Đổi mật khẩu                                                                                                         |");
+            System.out.println("|                             ******************** DISPLAY PRODUCT ***************                                         |");
+            System.out.println("|  1. Xem danh sách sản phẩm theo cây thư mục                                                                              |");
+            System.out.println("|  2. Xem danh sách sản phẩm mới                                                                                           |");
+            System.out.println("|  3. Xem danh sách sản phẩm giảm giá                                                                                      |");
             System.out.println("|  4. Thoát                                                                                                                |");
             System.out.println("*--------------------------------------------------------------------------------------------------------------------------*");
             System.out.print("Lựa chọn của bạn: ");
@@ -28,7 +28,7 @@ public class UserMenu {
             } while (true);
             switch (Integer.parseInt(choiceUserMenu)) {
                 case 1:
-                    DisplayProduct.displayProductForUser(scanner);
+                    displayByCatalog();
                     break;
                 case 2:
                     break;
@@ -41,6 +41,9 @@ public class UserMenu {
                     System.err.println(ShopMessage.NOTIFY_CHOICE_USER_MENU);
             }
         } while (checkExitUserMenu);
+    }
+
+    public static void displayByCatalog(){
 
     }
 }

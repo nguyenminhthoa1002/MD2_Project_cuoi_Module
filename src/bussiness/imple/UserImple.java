@@ -102,29 +102,30 @@ public class UserImple<T, E> implements IUser<User, Integer>, Serializable {
         }
         Date date = new Date();
         userNew.setDate(date);
-        System.out.println("Chọn trạng thái tài khoản: ");
-        System.out.println("1. Hoạt động");
-        System.out.println("2. Khóa");
-        System.out.print("Sự lựa chọn của bạn: ");
-        String choiceStatus;
-        do {
-            choiceStatus = scanner.nextLine();
-            if (ShopValidate.checkIntergerFormat(choiceStatus)) {
-                break;
-            } else {
-                System.err.println(ShopMessage.NOTIFY_INTEGER_FORMAT);
-            }
-        } while (true);
-        switch (Integer.parseInt(choiceStatus)) {
-            case 1:
-                userNew.setStatus(true);
-                break;
-            case 2:
-                userNew.setStatus(false);
-                break;
-            default:
-                System.err.println(ShopMessage.NOTIFY_CHOICE_STATUS);
-        }
+//        System.out.println("Chọn trạng thái tài khoản: ");
+//        System.out.println("1. Hoạt động");
+//        System.out.println("2. Khóa");
+//        System.out.print("Sự lựa chọn của bạn: ");
+//        String choiceStatus;
+//        do {
+//            choiceStatus = scanner.nextLine();
+//            if (ShopValidate.checkIntergerFormat(choiceStatus)) {
+//                break;
+//            } else {
+//                System.err.println(ShopMessage.NOTIFY_INTEGER_FORMAT);
+//            }
+//        } while (true);
+//        switch (Integer.parseInt(choiceStatus)) {
+//            case 1:
+//                userNew.setStatus(true);
+//                break;
+//            case 2:
+//                userNew.setStatus(false);
+//                break;
+//            default:
+//                System.err.println(ShopMessage.NOTIFY_CHOICE_STATUS);
+//        }
+        userNew.setStatus(true);
         System.out.println("Nhập Email: ");
         do {
             userNew.setEmail(scanner.nextLine());
@@ -158,7 +159,12 @@ public class UserImple<T, E> implements IUser<User, Integer>, Serializable {
         }
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String stringDate = formatter.format(user.getDate());
-        System.out.printf("%-10d%-35s%-35s%-40s%-15s%-20s%-15s%-30s%-20s", user.getUserID(), user.getUserName(), user.getPassword(), user.getFullName(), permission, stringDate, status, user.getEmail(), user.getPhone());
+        System.out.println("*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------*");
+        System.out.printf("|   %-40s%-35s%-35s%-35s%-35s\n", "Mã tài khoản", "Tên đăng nhập", "Mật khẩu", "Loại tài khoản", "Trạng thái");
+        System.out.printf("|   %-40d%-35s%-35s%-35s%-35s\n", user.getUserID(), user.getUserName(), user.getPassword(), permission, status);
+        System.out.printf("|   %-40s%-35s%-35s%-35s\n", "Tên chủ tài khoản", "Ngày tạo", "Email", "Phone");
+        System.out.printf("|   %-40s%-35s%-35s%-35s\n", user.getFullName(), stringDate, user.getEmail(), user.getPhone());
+        System.out.println("*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------*");
     }
 
     @Override
@@ -260,8 +266,9 @@ public class UserImple<T, E> implements IUser<User, Integer>, Serializable {
 
     public User checkLogin(String userName, String password) {
         List<User> listUser = readFromFile();
-        if (listUser == null) {
-            System.err.println(ShopMessage.NOTIFY_INPUT_CONFIRM_PASSWORD);
+        if (listUser==null) {
+            listUser = new ArrayList<>();
+            System.out.println(ShopMessage.NOTIFY_INPUT_CONFIRM_PASSWORD);
         } else {
             boolean checkExistUser = false;
             for (User user : listUser) {
@@ -271,7 +278,7 @@ public class UserImple<T, E> implements IUser<User, Integer>, Serializable {
                 }
             }
             if (!checkExistUser) {
-                System.err.println(ShopMessage.NOTIFY_INPUT_CONFIRM_PASSWORD);
+                System.out.println(ShopMessage.NOTIFY_INPUT_CONFIRM_PASSWORD);
             }
         }
         return null;

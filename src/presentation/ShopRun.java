@@ -54,14 +54,17 @@ public class ShopRun {
             System.out.print("Mật khẩu: ");
             String password = scanner.nextLine();
             User user = userImple.checkLogin(userName, password);
-            System.out.println();
             if (user != null) {
-                if (user.isPermission()) {
-                    AdminMenu.displayAdminMenu(scanner);
+                if (user.isStatus()) {
+                    if (user.isPermission()) {
+                        AdminMenu.displayAdminMenu(scanner);
+                    } else {
+                        UserMenu.displayUserMenu(scanner);
+                    }
+                    break;
                 } else {
-                    UserMenu.displayUserMenu(scanner);
+                    System.out.println(ShopMessage.NOTIFY_CLOSE_USER);
                 }
-                break;
             } else {
                 System.out.println("1. Đăng nhập lại");
                 System.out.println("2. Đăng ký");
@@ -95,7 +98,7 @@ public class ShopRun {
         } else {
             System.err.println(ShopMessage.NOTIFY_REGISTER_FAIL);
         }
-        if (user.isPermission()){
+        if (user.isPermission()) {
             AdminMenu.displayAdminMenu(scanner);
         } else {
             UserMenu.displayUserMenu(scanner);

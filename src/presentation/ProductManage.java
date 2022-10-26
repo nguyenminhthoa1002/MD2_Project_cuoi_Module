@@ -90,6 +90,7 @@ public class ProductManage {
             boolean check = false;
             for (Product pro : listProduct) {
                 if (pro.getProductID().equals(updateProduct)) {
+                    check = true;
                     System.out.println("Cập nhật tên sản phẩm: ");
                     String updateName = scanner.nextLine();
                     if (!updateName.equals("") && updateName.trim().length() != 0) {
@@ -229,17 +230,20 @@ public class ProductManage {
                             System.out.printf("%-15d%-35s%-30s\n", color.getColorID(), color.getColorName(), status);
                         }
                         System.out.println("Chọn hình thức cập nhật");
-                        System.out.println("1. Thêm màu");
-                        System.out.println("2. Thay đổi trạng thái màu có sẵn");
-                        System.out.print("Sự lựa chọn của bạn: ");
                         String choiceUpdateColor;
                         do {
-                            choiceUpdateColor = scanner.nextLine();
-                            if (ShopValidate.checkIntergerFormat(choiceUpdateColor)) {
-                                break;
-                            } else {
-                                System.err.println(ShopMessage.NOTIFY_INTEGER_FORMAT);
-                            }
+                            System.out.println("1. Thêm màu");
+                            System.out.println("2. Thay đổi trạng thái màu có sẵn");
+                            System.out.print("Sự lựa chọn của bạn: ");
+                            do {
+                                choiceUpdateColor = scanner.nextLine();
+                                if (ShopValidate.checkIntergerFormat(choiceUpdateColor)) {
+                                    break;
+                                } else {
+                                    System.err.println(ShopMessage.NOTIFY_INTEGER_FORMAT);
+                                }
+                            } while (true);
+                            break;
                         } while (true);
                         if (Integer.parseInt(choiceUpdateColor) == 1) {
                             List<Color> listProductColor = new ArrayList<>(pro.getColor());
@@ -261,7 +265,13 @@ public class ProductManage {
                                     }
                                 } while (true);
 
-                                if (Integer.parseInt(choice) >= 1 && Integer.parseInt(choice) <= listColor.size()) {
+                                int maxColor = 0;
+                                for (Color col : listColor) {
+                                    if (maxColor < col.getColorID()) {
+                                        maxColor = col.getColorID();
+                                    }
+                                }
+                                if (Integer.parseInt(choice) >= 1 && Integer.parseInt(choice) <= maxColor) {
                                     boolean checkColorExist = false;
                                     for (Color colorExist : listProductColor) {
                                         if (colorExist.getColorID() == Integer.parseInt(choice)) {
@@ -325,14 +335,19 @@ public class ProductManage {
                                     System.err.println(ShopMessage.NOTIFY_INTEGER_FORMAT);
                                 }
                             } while (true);
-                            if (Integer.parseInt(choiceChangeStatus) >= 1 && Integer.parseInt(choiceChangeStatus) <= pro.getColor().size()) {
-                                for (Color colExist : pro.getColor()) {
+                            int maxProductColor = 0;
+                            for (Color col : pro.getColor()) {
+                                if (maxProductColor < col.getColorID()) {
+                                    maxProductColor = col.getColorID();
+                                }
+                            }
+                            List<Color> colors = pro.getColor();
+                            if (Integer.parseInt(choiceChangeStatus) >= 1 && Integer.parseInt(choiceChangeStatus) <= maxProductColor) {
+                                for (Color colExist : colors) {
                                     if (colExist.getColorID() == Integer.parseInt(choiceChangeStatus)) {
-                                        pro.setStatus(!pro.isStatus());
-                                        break;
+                                        colExist.setColorStatus(!colExist.isColorStatus());
                                     }
                                 }
-                                break;
                             } else {
                                 System.err.println(ShopMessage.NOTIFY_INPUT_PRODUCT_CATALOG);
                             }
@@ -402,7 +417,13 @@ public class ProductManage {
                                         System.err.println(ShopMessage.NOTIFY_INTEGER_FORMAT);
                                     }
                                 } while (true);
-                                if (Integer.parseInt(choiceSize) >= 1 && Integer.parseInt(choiceSize) <= listSize.size()) {
+                                int maxSize = 0;
+                                for (Size size : listSize) {
+                                    if (maxSize < size.getSizeID()) {
+                                        maxSize = size.getSizeID();
+                                    }
+                                }
+                                if (Integer.parseInt(choiceSize) >= 1 && Integer.parseInt(choiceSize) <= maxSize) {
                                     boolean checkSizeExist = false;
                                     for (Size sizeExist : listProductSize) {
                                         if (sizeExist.getSizeID() == Integer.parseInt(choiceSize)) {
@@ -452,12 +473,10 @@ public class ProductManage {
                             System.out.printf("%-15s%-35s%-30s\n", "Mã kích cỡ", "Tên kích cỡ", "Trạng thái");
                             for (Size size : pro.getSize()) {
                                 String statusSize = "Không hoạt động";
-                                for (Size si : pro.getSize()) {
-                                    if (si.isSizeStatus()) {
-                                        statusSize = "Hoạt động";
-                                    }
-                                    System.out.printf("%-15d%-35s%-30s\n", si.getSizeID(), si.getSizeName(), statusSize);
+                                if (size.isSizeStatus()) {
+                                    statusSize = "Hoạt động";
                                 }
+                                System.out.printf("%-15d%-35s%-30s\n", size.getSizeID(), size.getSizeName(), statusSize);
                             }
                             System.out.print("Sự lựa chọn của bạn: ");
                             String choiceChangeSize;
@@ -469,14 +488,18 @@ public class ProductManage {
                                     System.err.println(ShopMessage.NOTIFY_INTEGER_FORMAT);
                                 }
                             } while (true);
-                            if (Integer.parseInt(choiceChangeSize) >= 1 && Integer.parseInt(choiceChangeSize) <= pro.getSize().size()) {
+                            int maxProductSize = 0;
+                            for (Size size : pro.getSize()) {
+                                if (maxProductSize < size.getSizeID()) {
+                                    maxProductSize = size.getSizeID();
+                                }
+                            }
+                            if (Integer.parseInt(choiceChangeSize) >= 1 && Integer.parseInt(choiceChangeSize) <= maxProductSize) {
                                 for (Size size : pro.getSize()) {
                                     if (size.getSizeID() == Integer.parseInt(choiceChangeSize)) {
-                                        pro.setStatus(!pro.isStatus());
-                                        break;
+                                        size.setSizeStatus(!size.isSizeStatus());
                                     }
                                 }
-                                break;
                             } else {
                                 System.err.println(ShopMessage.NOTIFY_INPUT_PRODUCT_CATALOG);
                             }
@@ -484,18 +507,19 @@ public class ProductManage {
                             System.err.println(ShopMessage.NOTIFY_CHOICE_STATUS);
                         }
                     }
-                }
-                if (productImple.update(pro)) {
-                    check = true;
-                    break;
+                    if (productImple.update(pro)) {
+                        System.out.println(ShopMessage.NOTIFY_UPDATE_SUCCESS);
+                    }
                 }
             }
-            if (check) {
-                System.out.println(ShopMessage.NOTIFY_UPDATE_SUCCESS);
+            if (!check) {
+                System.err.println(ShopMessage.NOTIFY_NOT_EXIST_PRODUCT);
             }
+
         } else {
             System.err.println(ShopMessage.NOTIFY_INPUT_EMPTY);
         }
+
     }
 
     public static void deleteProduct(Scanner scanner) {

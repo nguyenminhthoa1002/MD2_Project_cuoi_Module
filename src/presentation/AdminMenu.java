@@ -45,6 +45,7 @@ public class AdminMenu {
                     ProductManage.displayProduct(scanner);
                     break;
                 case 5:
+                    UserManage.displayUser(scanner);
                     break;
                 case 6:
                     checkExitAdminMenu = false;
@@ -54,6 +55,4 @@ public class AdminMenu {
             }
         } while (checkExitAdminMenu);
     }
-
-
 }
